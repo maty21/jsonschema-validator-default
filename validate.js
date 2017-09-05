@@ -1,6 +1,6 @@
 const { validate } = require('jsonschema');
 const jsonDefaults = require('json-schema-defaults');
-const defauls = require('lodash.defaults');
+const defaultsDeep = require('lodash.defaultsdeep');
 
 
 /**
@@ -14,7 +14,7 @@ module.exports.validator = (validateObj,jsonschema ) => {
 
     let isValid = validate(validateObj, jsonschema);
     if (isValid.valid) {
-        return defauls(validateObj, jsonDefaults(jsonschema));
+        return defaultsDeep(validateObj, jsonDefaults(jsonschema));
     }
     else return isValid;
 }

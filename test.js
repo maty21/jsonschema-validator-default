@@ -1,19 +1,27 @@
 const validate = require('./validate').validator;
 
-var json = {
-    "title": "Album Options",
+const json = {
+    "name": "unknown",
     "type": "object",
     "properties": {
-        "sort": {
+        "id": {
             "type": "string",
             "default": "id",
             "required": true
         },
-        "per_page": {
-            "default": 30,
-            "type": "integer"
+        "info": {
+
+            "type": "object",
+            "properties": {
+                "age": {
+                    "type": "integer",
+                    "default": 30,
+                    "required": true
+                },
+            }
         }
     }
 }
+console.log(JSON.stringify(validate({ id: "12345", info: { age: 6 } }, json)))
+console.log(JSON.stringify(validate({ id: "12345", info: { age: 6 } }, json)))
 
-console.dir(validate({sort:6},json))
