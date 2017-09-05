@@ -9,7 +9,8 @@
   "keywords": [
     "jsonschema",
     "json",
-    "validate"
+    "validate",
+    "default"
   ],
   "author": "maty zisserman",
   "license": "MIT",
