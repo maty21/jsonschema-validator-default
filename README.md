@@ -7,7 +7,7 @@ just a tiny libary based on jsonschema libary that allows you to test if your ob
 
 ### lazy 
 ```js
-const validate = require('jsdv').validator;
+const validate = require('jsonschema-default-validator');
 
 // create your schema
 const json = {
