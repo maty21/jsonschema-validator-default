@@ -1,5 +1,5 @@
 {
-  "name": "jsonschema-validate-default",
+  "name": "jsonschema-validateor-default",
   "version": "1.0.0",
   "description": "validate object and if it written correctly return an objectwith its missing defaults",
   "main": "app.js",
@@ -7,13 +7,22 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "jsonschema"
+    "jsonschema",
+    "json",
+    "validate"
   ],
   "author": "maty zisserman",
   "license": "MIT",
   "dependencies": {
     "json-schema-defaults": "^0.3.0",
     "jsonschema": "^1.2.0",
-    "lodash.defaults": "^4.2.0"
+    "lodash.defaultsdeep": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maty21/jsonschema-validator-default.git"
+  },
+  "bugs": {
+    "url": "https://github.com/maty21/jsonschema-validator-default/issues"
   }
 }
