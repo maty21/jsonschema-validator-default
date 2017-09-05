@@ -22,4 +22,4 @@ const _validator = (jsonschema,validateObj ) => {
     return isValid;
 }
 
-module.exports.validator =  curry(_validator);
+module.exports =  curry(_validator);

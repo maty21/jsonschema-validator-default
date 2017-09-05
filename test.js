@@ -1,4 +1,4 @@
-const validate = require('./app').validator;
+const validate = require('./app');
 
 const json = {
     "name": "unknown",
