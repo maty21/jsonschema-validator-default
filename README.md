@@ -9,7 +9,7 @@ just a tiny libary based on jsonschema libary that allows you to test if your ob
 const validate = require('./validate').validator;
 
 // create your schema
-var json = {
+const json = {
     "name": "unknown",
     "type": "object",
     "properties": {
