@@ -1,7 +1,7 @@
 {
-  "name": "jsonschema-validateor-default",
+  "name": "djsv",
   "version": "1.0.0",
-  "description": "validate object and if it written correctly return an objectwith its missing defaults",
+  "description": " default jsonschema validator based on jsonschema libary",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,16 @@
     "jsonschema",
     "json",
     "validate",
-    "default"
+    "default",
+    "defaults",
+    "JSON",
+    "schema",
+    "validator",
+    "validation",
+    "jsonschema",
+    "json-schema",
+    "json-schema-validator",
+    "json-schema-validation"
   ],
   "author": "maty zisserman",
   "license": "MIT",

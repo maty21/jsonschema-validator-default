@@ -6,7 +6,7 @@ just a tiny libary based on jsonschema libary that allows you to test if your ob
 ### usage example
 
 ```js
-const validate = require('./validate').validator;
+const validate = require('jsdv').validator;
 
 // create your schema
 const json = {
