@@ -1,6 +1,6 @@
 {
   "name": "djsv",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": " default jsonschema validator based on jsonschema libary",
   "main": "app.js",
   "scripts": {
