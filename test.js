@@ -1,4 +1,4 @@
-const validate = require('./validate').validator;
+const validate = require('./app').validator;
 
 const json = {
     "name": "unknown",
@@ -22,6 +22,10 @@ const json = {
         }
     }
 }
-console.log(JSON.stringify(validate({ id: "12345", info: { age: 6 } }, json)))
-console.log(JSON.stringify(validate({ id: "12345"}, json)))
+
+let validateWithSchema = validate(json);
+let obj= { id: "12345", info: { age: 6 } };
+console.log(JSON.stringify(validateWithSchema(obj).instance));
+console.log(JSON.stringify(validate(json, { id: "12345", info: { age: 6 } }).instance))
+console.log(JSON.stringify(validate(json, { id: "12345" }).instance))
 

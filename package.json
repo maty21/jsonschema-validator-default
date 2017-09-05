@@ -26,6 +26,7 @@
   "dependencies": {
     "json-schema-defaults": "^0.3.0",
     "jsonschema": "^1.2.0",
+    "lodash.curry": "^4.1.1",
     "lodash.defaultsdeep": "^4.2.0"
   },
   "repository": {

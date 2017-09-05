@@ -1,21 +1,25 @@
 const { validate } = require('jsonschema');
 const jsonDefaults = require('json-schema-defaults');
 const defaultsDeep = require('lodash.defaultsdeep');
+const curry = require('lodash.curry');
 
 
 /**
  * valid first check valid options and then add defailt property 
  * 
- * @param {any} validateObj the object you wish to check  
  * @param {any} jsonschema valid json schema 
+ * @param {any} validateObj the object you wish to check  
  * @returns if valid returns the schema with it's defaults  if not return jsonschema error 
  */
-module.exports.validator = (validateObj,jsonschema ) => {
+
+
+const _validator = (jsonschema,validateObj ) => {
 
     let isValid = validate(validateObj, jsonschema);
     if (isValid.valid) {
-        return defaultsDeep(validateObj, jsonDefaults(jsonschema));
+        defaultsDeep(validateObj, jsonDefaults(jsonschema));
     }
-    else return isValid;
+    return isValid;
 }
 
+module.exports.validator =  curry(_validator);
