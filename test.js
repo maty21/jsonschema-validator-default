@@ -23,5 +23,5 @@ const json = {
     }
 }
 console.log(JSON.stringify(validate({ id: "12345", info: { age: 6 } }, json)))
-console.log(JSON.stringify(validate({ id: "12345", info: { age: 6 } }, json)))
+console.log(JSON.stringify(validate({ id: "12345"}, json)))
 
