@@ -39,3 +39,14 @@ let validateWithSchema = validate(json);
 let obj= { id: "12345", info: { age: 6 } };
 console.log(JSON.stringify(validateWithSchema(obj).instance));
 ```
+
+### ignore null option
+ignorenull option allows you to set the default param in the return object although the value is defiend 
+
+```js 
+
+validateWithSchema = validate(json);
+console.log(JSON.stringify(validateWithSchema({ id: "12345", info: { age: 6, familyName: null } }).instance)) //=> {"id":"12345","info":{"age":6,"familyName":null}}
+console.log(JSON.stringify(validateWithSchema({ id: "12345", info: { age: 6, familyName: null } }, { ignoreNull:true }).instance)) //=>{"id":"12345","info":{"age":6,"familyName":"unknown"}}
+
+``` 
