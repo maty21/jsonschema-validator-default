@@ -45,6 +45,7 @@ const deepOmitby = object => {
 
 const _validator = (jsonschema, validateObj, options = { ignoreNull: false }) => {
     if (options.ignoreNull) {
+        validateObj=validateObj?validateObj:{};
         validateObj = deepOmitby(validateObj)
     }
     defaultsDeep(validateObj, jsonDefaults(jsonschema));
