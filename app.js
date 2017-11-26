@@ -4,8 +4,7 @@ const defaultsDeep = require('lodash.defaultsdeep');
 const omitby = require('lodash.omitby');
 const isNil = require('lodash.isnil');
 const curry = require('lodash.curry');
-
-
+const clone = require('clone');
 
 const isObject = val =>
     typeof val === 'object' && !Array.isArray(val);
@@ -36,25 +35,28 @@ const deepOmitby = object => {
 /**
  * valid first check valid options and then add defailt property 
  * 
- * @param {any} jsonschema valid json schema 
+ * @param {any} schema valid json schema
+ * @param {any} instance the object you wish to check  
  * @param {any} options options Object
- * @param {bool}options.ignoreNull default=false, allows to replace null property object with the default   
- * @param {any} validateObj the object you wish to check  
- * @returns if valid returns the schema with it's defaults  if not return jsonschema error 
+ * @param {bool} options.ignoreNull default=false, allows to replace null property object with the default
+ * @param {bool} options.useDefaultSchema default=false, allows to update instance properties with the default schema
+ * @returns if valid returns the schema with it's defaults  if not return schema error 
  */
-
-const _validator = (jsonschema, validateObj, options = { ignoreNull: false }) => {
+const _validator = (schema, instance, options = { ignoreNull: false, useDefaultSchema: false }) => {
+    instance = instance || {};
+    let obj = clone(instance);
     if (options.ignoreNull) {
-        validateObj=validateObj?validateObj:{};
-        validateObj = deepOmitby(validateObj)
+        obj = deepOmitby(obj);
     }
-    defaultsDeep(validateObj, jsonDefaults(jsonschema));
-    // defaultsDeep(validateObj, jsonDefaults(jsonschema));
-    let val = validate(validateObj, jsonschema);
-    return val
+    if (options.useDefaultSchema) {
+        defaultsDeep(obj, jsonDefaults(schema));
+    }
+    return validate(obj, schema);
 }
 
-
-
+const addSchema = (schema) => {
+    validator.addSchema(schema, schema.id);
+}
 
 module.exports = curry(_validator);
+module.exports.addSchema = addSchema;

@@ -1,6 +1,6 @@
 {
   "name": "djsv",
-  "version": "1.4.2",
+  "version": "2.0.0",
   "description": " default jsonschema validator based on jsonschema libary",
   "main": "app.js",
   "scripts": {
@@ -24,6 +24,7 @@
   "author": "maty zisserman",
   "license": "MIT",
   "dependencies": {
+    "clone": "^2.1.1",
     "json-schema-defaults": "^0.3.0",
     "jsonschema": "^1.2.0",
     "lodash.curry": "^4.1.1",
