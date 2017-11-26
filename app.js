@@ -1,4 +1,5 @@
-const { validate } = require('jsonschema');
+const Validator = require('jsonschema').Validator;
+const validator = new Validator();
 const jsonDefaults = require('json-schema-defaults');
 const defaultsDeep = require('lodash.defaultsdeep');
 const omitby = require('lodash.omitby');
@@ -51,7 +52,7 @@ const _validator = (schema, instance, options = { ignoreNull: false, useDefaultS
     if (options.useDefaultSchema) {
         defaultsDeep(obj, jsonDefaults(schema));
     }
-    return validate(obj, schema);
+    return validator.validate(obj, schema);
 }
 
 const addSchema = (schema) => {
