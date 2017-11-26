@@ -1,17 +1,14 @@
 ## jsonschema-validate-default
 just a tiny libary based on jsonschema libary that allows you to test if your object is valid and if so to combine it with your deafults data
 
-
-
 ### usage example
 
 ### lazy 
 ```js
-const validate = require('jsonschema-default-validator');
+const validate = require('djsv');
 
 // create your schema
 const json = {
-    "name": "unknown",
     "type": "object",
     "properties": {
         "id": {
@@ -26,8 +23,8 @@ const json = {
     }
 }
 
- let validObject = validate(json,{id:"maty"}) //=> {id:"maty",age:30}
- let validObject = validate(json,{id:"maty",age:20}) //=> {id:"maty",age:20}
+ let validObject = validate(json,{id:"maty"}) // validObject.instance => {id:"maty",age:30}
+ let validObject = validate(json,{id:"maty",age:20}) // validObject.instance => {id:"maty",age:20}
  let validObject = validate(json,{age:20}) //=> {id:"maty",age:20} => error:{valid:false, errorDescription:"id is required"}
  let validObject = validate(json,{id:123456}) //=> error:{valid:false, errorDescription:"id is not a string error "}
 ```
