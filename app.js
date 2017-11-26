@@ -1,4 +1,4 @@
-const Validator = require('jsonschema').Validator;
+const Validator = require('ajv');
 const validator = new Validator();
 const jsonDefaults = require('json-schema-defaults');
 const defaultsDeep = require('lodash.defaultsdeep');
@@ -43,16 +43,19 @@ const deepOmitby = object => {
  * @param {bool} options.useDefaultSchema default=false, allows to update instance properties with the default schema
  * @returns if valid returns the schema with it's defaults  if not return schema error 
  */
-const _validator = (schema, instance, options = { ignoreNull: false, useDefaultSchema: false }) => {
+const _validator = (schema, instance, options = { ignoreNull: false }) => {
     instance = instance || {};
     let obj = clone(instance);
     if (options.ignoreNull) {
         obj = deepOmitby(obj);
     }
-    if (options.useDefaultSchema) {
-        defaultsDeep(obj, jsonDefaults(schema));
+    defaultsDeep(obj, jsonDefaults(schema));
+    const valid = validator.validate(schema, obj);
+    const result = { valid, instance: obj };
+    if (!valid) {
+        result.error = validator.errorsText(validator.errors);
     }
-    return validator.validate(obj, schema);
+    return result;
 }
 
 const addSchema = (schema) => {

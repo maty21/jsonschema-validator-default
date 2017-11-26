@@ -1,0 +1,115 @@
+{
+    "schema": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+                "default": "test"
+            },
+            "nodes": {
+                "type": "array",
+                "items": {
+                    "$ref": "/pipelineNode"
+                }
+            },
+            "flowInput": {
+                "type": "object",
+                "properties": {}
+            },
+            "webhooks": {
+                "$ref": "/webhooks"
+            },
+            "options": {
+                "$ref": "/options"
+            }
+        },
+        "additionalProperties": false,
+        "required": [
+            "nodes",
+            "webhooks"
+        ]
+    },
+    "pipelineNode": {
+        "id": "/pipelineNode",
+        "type": "object",
+        "properties": {
+            "nodeName": {
+                "type": "string"
+            },
+            "algorithmName": {
+                "type": "string"
+            },
+            "input": {
+                "type": "array",
+                "items": {
+                    "anyOf": [
+                        {
+                            "type": [
+                                "string",
+                                "boolean",
+                                "object",
+                                "array",
+                                "number"
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "required": [
+            "nodeName",
+            "algorithmName",
+            "input"
+        ]
+    },
+    "webhooks": {
+        "id": "/webhooks",
+        "type": "object",
+        "properties": {
+            "progressHook": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "format": "url"
+                    }
+                }
+            },
+            "resultHook": {
+                "type": "object",
+                "properties": {
+                    "url": {
+                        "type": "string",
+                        "format": "url"
+                    }
+                }
+            }
+        },
+        "required": [
+            "progressHook",
+            "resultHook"
+        ]
+    },
+    "options": {
+        "id": "/options",
+        "type": "object",
+        "properties": {
+            "batchTolerance": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 100
+            },
+            "progressVerbosityLevel": {
+                "type": "string",
+                "enum": [
+                    "silly",
+                    "debug",
+                    "info",
+                    "warning",
+                    "error",
+                    "critical"
+                ]
+            }
+        }
+    }
+}

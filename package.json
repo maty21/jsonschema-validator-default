@@ -24,9 +24,9 @@
   "author": "maty zisserman",
   "license": "MIT",
   "dependencies": {
+    "ajv": "^5.5.0",
     "clone": "^2.1.1",
     "json-schema-defaults": "^0.3.0",
-    "jsonschema": "^1.2.0",
     "lodash.curry": "^4.1.1",
     "lodash.defaultsdeep": "^4.2.0",
     "lodash.isnil": "^4.0.0",
