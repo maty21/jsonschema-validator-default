@@ -1,15 +1,10 @@
 const Validator = require('ajv');
-const validator = new Validator();
-const jsonDefaults = require('json-schema-defaults');
-const defaultsDeep = require('lodash.defaultsdeep');
+const validator = new Validator({ useDefaults: true });
 const omitby = require('lodash.omitby');
 const isNil = require('lodash.isnil');
 const curry = require('lodash.curry');
-const clone = require('clone');
 
-const isObject = val =>
-    typeof val === 'object' && !Array.isArray(val);
-
+const isObject = val => typeof val === 'object' && !Array.isArray(val);
 
 const recursivelyOmitByUnit = (object) => {
     return Object.values(object).map(obj => {
@@ -20,6 +15,7 @@ const recursivelyOmitByUnit = (object) => {
         return obj
     })
 }
+
 const deepOmitby = object => {
     let returnedObj = {};
     let i = 0;
@@ -44,14 +40,11 @@ const deepOmitby = object => {
  * @returns if valid returns the schema with it's defaults  if not return schema error 
  */
 const _validator = (schema, instance, options = { ignoreNull: false }) => {
-    instance = instance || {};
-    let obj = clone(instance);
     if (options.ignoreNull) {
-        obj = deepOmitby(obj);
+        instance = deepOmitby(instance);
     }
-    defaultsDeep(obj, jsonDefaults(schema));
-    const valid = validator.validate(schema, obj);
-    const result = { valid, instance: obj };
+    const valid = validator.validate(schema, instance);
+    const result = { valid };
     if (!valid) {
         result.error = validator.errorsText(validator.errors);
     }
@@ -62,5 +55,11 @@ const addSchema = (schema) => {
     validator.addSchema(schema, schema.id);
 }
 
+const addFormat = (name, format) => {
+    validator.addFormat(name, format);
+}
+
+
 module.exports = curry(_validator);
 module.exports.addSchema = addSchema;
+module.exports.addFormat = addFormat;

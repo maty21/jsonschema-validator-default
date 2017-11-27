@@ -1,7 +1,7 @@
 {
   "name": "djsv",
   "version": "3.0.0",
-  "description": " default jsonschema validator based on jsonschema libary",
+  "description": "default jsonschema validator based on jsonschema libary",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -25,13 +25,9 @@
   "license": "MIT",
   "dependencies": {
     "ajv": "^5.5.0",
-    "clone": "^2.1.1",
-    "json-schema-defaults": "^0.3.0",
     "lodash.curry": "^4.1.1",
-    "lodash.defaultsdeep": "^4.2.0",
     "lodash.isnil": "^4.0.0",
-    "lodash.omitby": "^4.6.0",
-    "lodash.pickby": "^4.6.0"
+    "lodash.omitby": "^4.6.0"
   },
   "repository": {
     "type": "git",
