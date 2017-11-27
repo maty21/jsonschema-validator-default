@@ -40,11 +40,12 @@ const deepOmitby = object => {
  * @returns if valid returns the schema with it's defaults  if not return schema error 
  */
 const _validator = (schema, instance, options = { ignoreNull: false }) => {
+    instance = instance || {};
     if (options.ignoreNull) {
         instance = deepOmitby(instance);
     }
     const valid = validator.validate(schema, instance);
-    const result = { valid };
+    const result = { valid, instance };
     if (!valid) {
         result.error = validator.errorsText(validator.errors);
     }
