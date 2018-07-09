@@ -1,4 +1,8 @@
 ## jsonschema-validate-default
+
+[![Build Status](https://travis-ci.org/kube-HPC/jsonschema-validate-default.svg?branch=master)](https://travis-ci.org/kube-HPC/jsonschema-validate-default)
+[![Coverage Status](https://coveralls.io/repos/github/kube-HPC/jsonschema-validate-default/badge.svg?branch=master)](https://coveralls.io/github/kube-HPC/jsonschema-validate-default?branch=master)
+
 just a tiny libary based on jsonschema libary that allows you to test if your object is valid and if so to combine it with your deafults data
 
 ### usage example

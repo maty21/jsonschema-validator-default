@@ -1,5 +1,7 @@
-const validate = require('./app');
+const chai = require('chai');
+const validate = require('../index');
 const schemas = require('./schemas');
+const expect = chai.expect;
 
 const instance = {
     "nodes": [
@@ -32,6 +34,11 @@ Object.values(schemas).forEach((s) => {
     }
 });
 
-let result = validate(schemas.schema, instance);
-console.log(result);
-
+describe('Test', function () {
+    it('validate', function () {
+        let result = validate(schemas.schema, instance);
+        expect(result.valid).to.equals(true);
+        expect(result).to.have.property('valid');
+        expect(result).to.have.property('instance');
+    });
+});

@@ -1,10 +1,12 @@
 {
   "name": "djsv",
   "version": "3.0.3",
-  "description": "default jsonschema validator based on jsonschema libary",
+  "description": "default jsonschema validator based on jsonschema library",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha tests --colors --recursive --exit",
+    "test:cov": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- -R spec tests --colors --recursive --exit",
+    "build": "npm publish"
   },
   "keywords": [
     "jsonschema",
@@ -35,5 +37,11 @@
   },
   "bugs": {
     "url": "https://github.com/maty21/jsonschema-validator-default/issues"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "coveralls": "^3.0.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^5.2.0"
   }
 }

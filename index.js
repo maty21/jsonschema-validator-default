@@ -1,5 +1,5 @@
 const Validator = require('ajv');
-const validator = new Validator({ useDefaults: true });
+const validator = new Validator({ useDefaults: true, coerceTypes: true });
 const omitby = require('lodash.omitby');
 const isNil = require('lodash.isnil');
 const curry = require('lodash.curry');
